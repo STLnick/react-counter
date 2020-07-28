@@ -1,5 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Button } from './Button'
+
+import './Display.css'
 
 export class Display extends React.Component {
   state = {
@@ -14,10 +16,10 @@ export class Display extends React.Component {
 
   render() {
     return (
-      <Fragment>
+      <div>
         <p>{this.state.currentCount}</p>
-        <Button buttonHandler={this.updateCount} buttonText="+1" />
-      </Fragment>
+        <Button buttonHandler={this.updateCount} buttonText="Add 1" />
+      </div>
     )
   }
 }
