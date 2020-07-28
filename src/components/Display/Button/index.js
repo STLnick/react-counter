@@ -9,7 +9,12 @@ export const Button = (props) => {
   }
 
   return (
-    <button onClick={(e) => handleClick(e, props.qty)} data-op={props.op} data-qty={props.qty}>
+    <button
+      onClick={(e) => handleClick(e, props.qty)}
+      data-op={props.op}
+      data-qty={props.qty}
+      className={props.buttonClass}
+    >
       {props.buttonText}
     </button>
   )
@@ -18,6 +23,7 @@ export const Button = (props) => {
 Button.propTypes = {
   buttonHandler: PropTypes.func,
   buttonText: PropTypes.string.isRequired,
+  buttonClass: PropTypes.string.isRequired,
   op: PropTypes.string.isRequired,
   qty: PropTypes.string.isRequired
 }
