@@ -6,6 +6,11 @@ export class Display extends React.Component {
     currentCount: 0
   }
 
+  updateCount = () => {
+    this.setState(prevState => ({
+      currentCount: prevState.currentCount + 1
+    }))
+  }
 
   render() {
     return (
