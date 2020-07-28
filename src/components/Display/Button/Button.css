@@ -1,5 +1,4 @@
 button {
-  background-color: dodgerblue;
   border: none;
   border-radius: 5px;
   color: white;
@@ -8,4 +7,32 @@ button {
   margin: 1rem;
   padding: 0.5rem 1rem;
   text-transform: uppercase;
+  transition: box-shadow 0.4s;
+}
+
+.add-btn {
+  background-color: dodgerblue;
+}
+
+.add-btn:focus,
+.add-btn:hover {
+  box-shadow: 0 0 3px 5px dodgerblue;
+}
+
+.subtract-btn {
+  background-color: firebrick;
+}
+
+.subtract-btn:focus,
+.subtract-btn:hover {
+  box-shadow: 0 0 3px 5px firebrick;
+}
+
+.reset-btn {
+  background-color: blueviolet;
+}
+
+.reset-btn:focus,
+.reset-btn:hover {
+  box-shadow: 0 0 3px 5px blueviolet;
 }

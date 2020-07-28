@@ -6,7 +6,13 @@ div {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: var(--p-font-size);
   justify-content: center;
   text-align: center;
+}
+
+.count {
+  border: 2px solid #888;
+  font-size: var(--p-font-size);
+  margin: 0.5rem;
+  padding: 1rem;
 }
