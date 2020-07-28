@@ -1,8 +1,12 @@
+:root {
+  --p-font-size: 24px;
+}
+
 div {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 24px;
+  font-size: var(--p-font-size);
   justify-content: center;
   text-align: center;
 }
