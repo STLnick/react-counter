@@ -11,6 +11,58 @@ export class Display extends React.Component {
     currentCount: 0
   }
 
+  buttons = [
+    {
+      buttonClass: 'add-btn',
+      buttonText: 'Add 1',
+      op: '+',
+      qty: 1
+    },
+    {
+      buttonClass: 'add-btn',
+      buttonText: 'Add 2',
+      op: '+',
+      qty: 2
+    },
+    {
+      buttonClass: 'add-btn',
+      buttonText: 'Add 5',
+      op: '+',
+      qty: 5
+    },
+    {
+      buttonClass: 'subtract-btn',
+      buttonText: 'Subtract 1',
+      op: '-',
+      qty: 1
+    },
+    {
+      buttonClass: 'subtract-btn',
+      buttonText: 'Subtract 10',
+      op: '-',
+      qty: 10
+    },
+    {
+      buttonClass: 'reset-btn',
+      buttonText: 'Reset',
+      op: '',
+      qty: 0
+    }
+  ]
+
+  renderBtns = () => this.buttons.map((btn, index) => {
+    return (
+      <Button
+        buttonHandler={this.updateCount}
+        buttonClass={btn.buttonClass}
+        buttonText={btn.buttonText}
+        key={index}
+        op={btn.op}
+        qty={btn.qty}
+      />
+    )
+  })
+
   updateFontSize = (amount, operator) => {
     let newFontSize
 
@@ -69,13 +121,8 @@ export class Display extends React.Component {
     return (
       <div>
         <p className="count">{this.state.currentCount}</p>
-        <Button buttonHandler={this.updateCount} buttonClass='add-btn' buttonText="Add 1" op="+" qty="1" />
-        <Button buttonHandler={this.updateCount} buttonClass='add-btn' buttonText="Add 2" op="+" qty="2" />
-        <Button buttonHandler={this.updateCount} buttonClass='add-btn' buttonText="Add 5" op="+" qty="5" />
-        <Button buttonHandler={this.updateCount} buttonClass='subtract-btn' buttonText="Subtract 1" op="-" qty="1" />
-        <Button buttonHandler={this.updateCount} buttonClass='subtract-btn' buttonText="Subtract 10" op="-" qty="10" />
-        <Button buttonHandler={this.updateCount} buttonClass='reset-btn' buttonText="Reset" op="" qty="0" />
-      </div>
+        {this.renderBtns()}
+      </div >
     )
   }
 }
