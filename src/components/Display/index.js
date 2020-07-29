@@ -64,12 +64,16 @@ export class Display extends React.Component {
   })
 
   updateFontSize = (amount, operator) => {
+    const pxIndex = styles.getPropertyValue('--p-font-size').trim().indexOf('p')
+    const currentFontSize = styles.getPropertyValue('--p-font-size').trim().slice(0, pxIndex)
     let newFontSize
 
+    console.log(currentFontSize)
+
     if (operator === '+') {
-      newFontSize = Number(styles.getPropertyValue('--p-font-size').trim().slice(0, 2)) + Number(amount)
+      newFontSize = Number(currentFontSize) + Number(amount)
     } else if (operator === '-') {
-      newFontSize = Number(styles.getPropertyValue('--p-font-size').trim().slice(0, 2)) - Number(amount)
+      newFontSize = Number(currentFontSize) - Number(amount)
     } else {
       newFontSize = 24
     }
