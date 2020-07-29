@@ -3,55 +3,66 @@ import { Button } from './Button'
 
 import './Display.css'
 
-const root = document.documentElement
-const styles = getComputedStyle(root)
+const root = document.documentElement // For setting CSS custom properties
+const styles = getComputedStyle(root) // For retrieving current CSS custom properties
 
 export class Display extends React.Component {
   state = {
     currentCount: 0
   }
 
+  updateFontSize = (amount, operator) => {
+    let newFontSize
+
+    if (operator === '+') {
+      newFontSize = Number(styles.getPropertyValue('--p-font-size').trim().slice(0, 2)) + Number(amount)
+    } else if (operator === '-') {
+      newFontSize = Number(styles.getPropertyValue('--p-font-size').trim().slice(0, 2)) - Number(amount)
+    } else {
+      newFontSize = 24
+    }
+    root.style.setProperty('--p-font-size', newFontSize + 'px')
+  }
+
   updateCount = (e, qty) => {
     // Operator
     const op = e.target.dataset.op
 
-    if (op === '+') { // Add
+    if (op === '+') { /* Add */
       // Set State
       this.setState(prevState => ({
         currentCount: prevState.currentCount + Number(qty)
       }))
 
       // Set new font size
-      const newFontSize = Number(styles.getPropertyValue('--p-font-size').trim().slice(0, 2)) + Number(qty)
-      root.style.setProperty('--p-font-size', newFontSize + 'px')
+      this.updateFontSize(qty, op)
 
-    } else if (op === '-') { // Subtract
+    } else if (op === '-') { /* Subtract */
       if (this.state.currentCount > 0) {
         if (this.state.currentCount - Number(qty) >= 0) {
+          // Set State
           this.setState(prevState => ({
             currentCount: prevState.currentCount - Number(qty)
           }))
-
           // Set new font size
-          const newFontSize = Number(styles.getPropertyValue('--p-font-size').trim().slice(0, 2)) - Number(qty)
-          root.style.setProperty('--p-font-size', newFontSize + 'px')
+          this.updateFontSize(qty, op)
 
         } else { // If subtraction will result in negative just set to 0
+          // Set State
           this.setState(() => ({
             currentCount: 0
           }))
           // Set new font size
-          root.style.setProperty('--p-font-size', '24px')
+          this.updateFontSize()
         }
       }
-
-    } else { // Reset
-      this.setState(prevState => ({
+    } else { /* Reset */
+      // Set State
+      this.setState(() => ({
         currentCount: 0
       }))
-
       // Set new font size
-      root.style.setProperty('--p-font-size', '24px')
+      this.updateFontSize()
     }
   }
 
