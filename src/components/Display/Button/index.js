@@ -25,5 +25,5 @@ Button.propTypes = {
   buttonText: PropTypes.string.isRequired,
   buttonClass: PropTypes.string.isRequired,
   op: PropTypes.string.isRequired,
-  qty: PropTypes.string.isRequired
+  qty: PropTypes.number.isRequired
 }
