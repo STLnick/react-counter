@@ -33,13 +33,12 @@ export class Display extends React.Component {
       this.setState(prevState => ({
         currentCount: prevState.currentCount + Number(qty)
       }))
-
       // Set new font size
       this.updateFontSize(qty, op)
 
     } else if (op === '-') { /* Subtract */
       if (this.state.currentCount > 0) {
-        if (this.state.currentCount - Number(qty) >= 0) {
+        if (this.state.currentCount - Number(qty) >= 0) { /* If subtraction won't result in negative */
           // Set State
           this.setState(prevState => ({
             currentCount: prevState.currentCount - Number(qty)
@@ -47,7 +46,7 @@ export class Display extends React.Component {
           // Set new font size
           this.updateFontSize(qty, op)
 
-        } else { // If subtraction will result in negative just set to 0
+        } else { /* If subtraction will result in negative just set to 0 */
           // Set State
           this.setState(() => ({
             currentCount: 0
